@@ -23,4 +23,4 @@ normal模式：在公开平台输出自己的笔记心得【CSDN、github、简�
 更不需要使用大模型来凑字数。看多了，一眼就知道是大模型生成的~
 
 4、打卡进度
-![打卡进度](images/task.png)
+![打卡进度](images/tasks.jpg)
