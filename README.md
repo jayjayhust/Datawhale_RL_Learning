@@ -2,8 +2,6 @@
 
 ## 学习打卡指南
 
-Step2：通关秘籍 
-接下来我们将发放本次学习教程地址与打卡地址，并带大家了解学习模式与打卡要求： 
 【教程地址】
 https://github.com/datawhalechina/joyrl-book
  
@@ -13,7 +11,7 @@ https://github.com/datawhalechina/joyrl-book
  
 2、打卡规则：本次学习需要按照相应时间节点完成学习任务，在打卡截止时间前完成打卡。 
 【打卡地址】
-https://exn8g66dnwu.feishu.cn/share/base/form/shrcn9C1IXRX3zBmpTwUzEc7Atd 
+https://exn8g66dnwu.feishu.cn/share/base/form/shrcn9C1lXRX3zBmpTwUzEc7Atd
 
 3、打卡内容：包括但不限于学习到的知识总结、学习遇到的问题和对本次task的感受。希望大家尽量自己总结撰写，不要复制教程，不要写与本次学习无关的内容。 
 easy模式：在打卡栏填写50字打卡心得。 
