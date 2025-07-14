@@ -17,6 +17,9 @@
   ![推导过程](images/task01_3-1.png)
   ![核心步骤解析](images/task01_3-2.png)
   - 对于动作价值函数（动作价值函数贝尔曼方程）：
+  ![结果公式](images/task01_3-3.png)
+  ![推导过程](images/task01_3-4.png)
+  - 贝尔曼最优方程（Bellman optimality equation）：
 
 
 
