@@ -6,6 +6,7 @@
 - 回报公式：Gt = R(t+1) + γG(t+1) = R(t+1) + γR(t+2) + γ^2G(t+2) + ...
 
 ## [动态规划](https://datawhalechina.github.io/joyrl-book/#/ch3/main)
+- 动态规划基础编程思想：[路径之和](https://leetcode.cn/problems/unique-paths/solutions/514311/bu-tong-lu-jing-by-leetcode-solution-hzjf/)
 - 状态价值函数：Vpi(s) = Epi[Gt|St=s]
 - 动作价值函数：Qpi(s,a) = Epi[Gt|St=s,At=a]
 - 对应的，状态价值函数和动作价值函数的关系为：Vpi(s) = Qpi(s,a1)*P(a1|s) + Qpi(s,a2)*P(a2|s) + ...
@@ -18,6 +19,10 @@
   ![结果公式](../../images/task01_3-3.png)
   ![推导过程](../../images/task01_3-4.png)
   - 贝尔曼最优方程（Bellman optimality equation）：
+  ![结果公式](../../images/task01_3-5.png)
+- 策略迭代：
+- 价值迭代：
+
 
 
 
