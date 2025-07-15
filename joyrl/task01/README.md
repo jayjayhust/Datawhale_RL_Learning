@@ -30,8 +30,8 @@
     ```javascript
     // State space: GridWorld has 10x10 = 100 distinct states. The start state is the top left cell,
     // and the gray cells are walls and cannot be moved to.
-    // The policy array is one-dimensional in this implementation, but stores the probability of taking any action in any state, 
-    // so I'm using funny indexing (this.P[a*this.ns + s]) to not have to deal with 2D arrays in Javascript
+    // The policy array is one-dimensional in this implementation, but stores the probability of taking any action 
+    // in any state, so I'm using funny indexing (this.P[a*this.ns + s]) to not have to deal with 2D arrays in Javascript
 
     // this.V (value function array)
     // this.gamma (discount factor), here is 0.9
