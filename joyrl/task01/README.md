@@ -9,8 +9,8 @@
 - 动态规划基础编程思想：[路径之和](https://leetcode.cn/problems/unique-paths/solutions/514311/bu-tong-lu-jing-by-leetcode-solution-hzjf/)
 - 状态价值函数：Vpi(s) = Epi[Gt|St=s]
 - 动作价值函数：Qpi(s,a) = Epi[Gt|St=s,At=a]
-- 对应的，状态价值函数和动作价值函数的关系为：Vpi(s) = Qpi(s,a1)*P(a1|s) + Qpi(s,a2)*P(a2|s) + ...
-  - P(a*|s)：可以理解为策略函数，一般指在状态s下执行动作a*的概率分布。a*归属于动作空间A。
+- 对应的，状态价值函数和动作价值函数的关系为：Vpi(s) = Qpi(s,a1)\*P(a1|s) + Qpi(s,a2)\*P(a2|s) + ...
+  - P(a*|s)：可以理解为策略函数，一般指在状态s下执行动作a\*的概率分布。a\*归属于动作空间A。
 - 贝尔曼方程：
   - 对于状态价值函数（状态价值函数贝尔曼方程）：
   ![推导过程](../../images/task01_3-1.png)
