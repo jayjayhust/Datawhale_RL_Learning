@@ -44,7 +44,7 @@
         var poss = this.env.allowedActions(s); // fetch all possible actions
         for(var i=0,n=poss.length; i < n; i++) {
           var a = poss[i];
-          var prob = this.P[a*this.ns+s]; // probability of taking action under current policy
+          var prob = this.P[a*this.ns + s]; // probability of taking action under current policy
           var ns = this.env.nextStateDistribution(s, a); // look up the next state
           var rs = this.env.reward(s, a, ns); // get reward for s->a->ns transition
           v += prob * (rs + this.gamma * this.V[ns]);
