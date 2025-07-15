@@ -28,6 +28,14 @@
     ![迭代中期：Policy Evaluation](../../images/task01_3-7.png)
     ![迭代末期：Policy Update](../../images/task01_3-8.png)
     ```javascript
+    // State space: GridWorld has 10x10 = 100 distinct states. The start state is the top left cell. The gray cells are walls and cannot be moved to.
+    // this.V (value function array)
+    // this.gamma (discount factor), here is 0.9
+    // this.ns (number of states)
+    // this.P which stores the current policy
+    // this.env, which is a pointer to the Environment object
+    // The policy array is one-dimensional in this implementation, but stores the probability of taking any action in any state, so I'm using funny indexing (this.P[a*this.ns + s]) to not have to deal with 2D arrays in Javascript
+
     evaluatePolicy: function() {
       // perform a synchronous update of the value function
       var Vnew = zeros(this.ns); // initialize new value function array for each state
@@ -72,6 +80,15 @@
         }
       }
     },
+
+    // create environment
+    env = new Gridworld(); 
+    // create the agent, yay! Discount factor 0.9
+    agent = new RL.DPAgent(env, {'gamma':0.9}); 
+    // call this function repeatedly until convergence:
+    agent.learn();
+    // once trained, get the agent's behavior with:
+    var action = agent.act(); // returns the index of the chosen action
     ```
     - 价值迭代算法：对应点击Toggle Value Iteration（全流程自动执行）
 
