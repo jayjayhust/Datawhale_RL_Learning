@@ -20,8 +20,11 @@
   ![推导过程](../../images/task01_3-4.png)
   - 贝尔曼最优方程（Bellman optimality equation）：
   ![结果公式](../../images/task01_3-5.png)
-- 策略迭代：
-- 价值迭代：
+- 策略迭代（Policy Iteration）和价值迭代（Value Iteration）：
+  - [带两种逐步推导的例子：公主的营救](https://mp.weixin.qq.com/s/ub4EpRZAtny2KTeJqNimbQ)
+  - [GridWorld: Dynamic Programming Demo](https://cs.stanford.edu/people/karpathy/reinforcejs/gridworld_dp.html)
+    - 策略迭代算法：一次迭代包括两个步骤，首先是策略评估对应Policy Evaluation(one sweep)，然后是策略改进对应Policy Update
+    - 价值迭代算法：对应点击Toggle Value Iteration（全流程自动执行）
 
 
 
