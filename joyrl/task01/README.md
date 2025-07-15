@@ -31,14 +31,14 @@
     evaluatePolicy: function() {
       // perform a synchronous update of the value function
       var Vnew = zeros(this.ns); // initialize new value function array for each state
-      for(var s=0;s < this.ns;s++) {
+      for(var s=0; s < this.ns; s++) {
         var v = 0.0;
         var poss = this.env.allowedActions(s); // fetch all possible actions
-        for(var i=0,n=poss.length;i < n;i++) {
+        for(var i=0,n=poss.length; i < n; i++) {
           var a = poss[i];
           var prob = this.P[a*this.ns+s]; // probability of taking action under current policy
-          var ns = this.env.nextStateDistribution(s,a); // look up the next state
-          var rs = this.env.reward(s,a,ns); // get reward for s->a->ns transition
+          var ns = this.env.nextStateDistribution(s, a); // look up the next state
+          var rs = this.env.reward(s, a, ns); // get reward for s->a->ns transition
           v += prob * (rs + this.gamma * this.V[ns]);
         }
         Vnew[s] = v;
@@ -49,16 +49,16 @@
     updatePolicy: function() {
       // update policy to be greedy w.r.t. learned Value function
       // iterate over all states...
-      for(var s=0;s < this.ns;s++) {
+      for(var s=0; s < this.ns; s++) {
         var poss = this.env.allowedActions(s);
         // compute value of taking each allowed action
         var vmax, nmax;
         var vs = [];
-        for(var i=0,n=poss.length;i < n;i++) {
+        for(var i=0,n=poss.length; i < n; i++) {
           var a = poss[i];
           // compute the value of taking action a
-          var ns = this.env.nextStateDistribution(s,a);
-          var rs = this.env.reward(s,a,ns);
+          var ns = this.env.nextStateDistribution(s, a);
+          var rs = this.env.reward(s, a, ns);
           var v = rs + this.gamma * this.V[ns];
           // bookeeping: store it and maintain max
           vs.push(v);
@@ -66,9 +66,9 @@
           else if(v === vmax) { nmax += 1; }
         }
         // update policy smoothly across all argmaxy actions
-        for(var i=0,n=poss.length;i < n;i++) {
+        for(var i=0,n=poss.length; i < n; i++) {
           var a = poss[i];
-          this.P[a*this.ns+s] = (vs[i] === vmax) ? 1.0/nmax : 0.0;
+          this.P[a*this.ns + s] = (vs[i] === vmax) ? 1.0/nmax : 0.0;
         }
       }
     },
