@@ -27,5 +27,5 @@
 ![Q-learning公式2](../../images/task02_4-7.png)
 - Sarsa 算法：Sarsa算法也是一种免模型的控制算法，它与Q-learning类似，但它在更新策略时使用了下一个动作的值（所以是一种On-policy算法）。
 ![Sarsa公式](../../images/task02_4-8.png)
-- Q-learning代码实战：[QLearning_CliffWalking-v0](./QLearning_CliffWalking-v0.ipynb)和[CliffWalking-v0源代码-自己加了一些注释](./cliffwalking.py)
+- Q-learning代码实战：[QLearning_CliffWalking-v0：使用QLearning这个agent来训练和测试CliffWalking-v0这个env](./QLearning_CliffWalking-v0.ipynb)和[CliffWalking-v0源代码-自己加了一些注释](./cliffwalking.py)。尤其注意观察Jupyter脚本最后输出Log中Q_table的变化，可以通过理解Q_table中各个状态空间价值更新的过程，来深入理解Q-learning算法的原理。
 
