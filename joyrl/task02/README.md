@@ -12,20 +12,20 @@
 
 ## 免模型预测
 - 蒙特卡洛估计：蒙特卡洛估计方法在强化学习中是免模型预测价值函数的方式之一，本质是一种统计模拟方法。
-![蒙特卡洛估计公式1](../../images/task01_4-1.png)
-![蒙特卡洛估计公式2](../../images/task01_4-2.png)
+![蒙特卡洛估计公式1](../../images/task02_4-1.png)
+![蒙特卡洛估计公式2](../../images/task02_4-2.png)
 - 时序差分估计方法：TD（Temporal Difference）学习是强化学习中另一种免模型预测价值函数的方法，它结合了蒙特卡洛方法和动态规划的优点。
-![时序差分估计公式1](../../images/task01_4-3.png)
+![时序差分估计公式1](../../images/task02_4-3.png)
 - 蒙特卡洛估计和时序差分估计的区别和联系
-![蒙特卡洛估计和时序差分估计的区别和联系1](../../images/task01_4-4.png)
-![蒙特卡洛估计和时序差分估计的区别和联系2](../../images/task01_4-5.png)
+![蒙特卡洛估计和时序差分估计的区别和联系1](../../images/task02_4-4.png)
+![蒙特卡洛估计和时序差分估计的区别和联系2](../../images/task02_4-5.png)
 
 ## 免模型控制
 回顾前面讲的控制，即给定一个马尔可夫决策过程，输出最优策略以及对应的最优价值函数。而免模型则是指不需要知道环境的状态转移概率的一类算法，实际上很多经典的强化学习算法都是免模型控制的。本章会重点介绍两种基础的免模型算法，Q-learning和Sarsa，也都是基于时序差分的方法。
 - Q-learning：Q-learning是一种免模型的控制算法，它通过迭代更新Q值来找到最优策略。
-![Q-learning公式1](../../images/task01_4-6.png)
-![Q-learning公式2](../../images/task01_4-7.png)
+![Q-learning公式1](../../images/task02_4-6.png)
+![Q-learning公式2](../../images/task02_4-7.png)
 - Sarsa 算法：Sarsa算法也是一种免模型的控制算法，它与Q-learning类似，但它在更新策略时使用了下一个动作的值（所以是一种On-policy算法）。
-![Sarsa公式](../../images/task01_4-8.png)
+![Sarsa公式](../../images/task02_4-8.png)
 - Q-learning代码实战：[QLearning_CliffWalking-v0](./QLearning_CliffWalking-v0.ipynb)和[CliffWalking-v0源代码-自己加了一些注释](./cliffwalking.py)
 
