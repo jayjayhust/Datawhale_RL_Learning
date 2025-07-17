@@ -69,14 +69,14 @@ class CliffWalkingEnv(Env):
 
     def __init__(self, render_mode: Optional[str] = None):
         self.shape = (4, 12)
-        self.start_state_index = np.ravel_multi_index((3, 0), self.shape)
+        self.start_state_index = np.ravel_multi_index((3, 0), self.shape)  # [3, 0] as the start at bottom-left
 
-        self.nS = np.prod(self.shape)
-        self.nA = 4
+        self.nS = np.prod(self.shape)  # number of states
+        self.nA = 4  # number of actions
 
         # Cliff Location
         self._cliff = np.zeros(self.shape, dtype=bool)
-        self._cliff[3, 1:-1] = True
+        self._cliff[3, 1:-1] = True  # [3, 1:-1] as the cliff at bottom-center
 
         # Calculate transition probabilities and rewards
         self.P = {}
@@ -91,7 +91,7 @@ class CliffWalkingEnv(Env):
         # Calculate initial state distribution
         # We always start in state (3, 0)
         self.initial_state_distrib = np.zeros(self.nS)
-        self.initial_state_distrib[self.start_state_index] = 1.0
+        self.initial_state_distrib[self.start_state_index] = 1.0  # [3, 0] as the start at bottom-left
 
         self.observation_space = spaces.Discrete(self.nS)
         self.action_space = spaces.Discrete(self.nA)
@@ -135,12 +135,12 @@ class CliffWalkingEnv(Env):
         new_position = np.array(current) + np.array(delta)
         new_position = self._limit_coordinates(new_position).astype(int)
         new_state = np.ravel_multi_index(tuple(new_position), self.shape)
-        if self._cliff[tuple(new_position)]:
-            return [(1.0, self.start_state_index, -100, False)]
+        if self._cliff[tuple(new_position)]:  # [3, 1:-1] as the cliff at bottom-center
+            return [(1.0, self.start_state_index, -100, False)]  # return to start
 
-        terminal_state = (self.shape[0] - 1, self.shape[1] - 1)
+        terminal_state = (self.shape[0] - 1, self.shape[1] - 1)  # [3, 11] as the goal at bottom-right
         is_terminated = tuple(new_position) == terminal_state
-        return [(1.0, new_state, -1, is_terminated)]
+        return [(1.0, new_state, -1, is_terminated)]  # otherwise return to new state
 
     def step(self, a):
         transitions = self.P[self.s][a]
