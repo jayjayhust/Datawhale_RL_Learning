@@ -10,6 +10,59 @@ DQN算法相比于Q-learning算法主要有以下改进：
 
 - 代码实战
   - [DQN](./DQN/DQN_CartPole-v1.ipynb)
+  核心代码解析
+  ```
+  class ReplayBuffer(object):
+    def __init__(self, capacity: int) -> None:
+        self.capacity = capacity
+        self.buffer = deque(maxlen=self.capacity)
+    def push(self,transitions):
+        ''' 存储transition到经验回放中
+        '''
+        self.buffer.append(transitions)
+    def sample(self, batch_size: int, sequential: bool = False):
+        if batch_size > len(self.buffer):  # 如果批量大小大于经验回放的容量，则取经验回放的容量
+            batch_size = len(self.buffer)
+        if sequential:  # 顺序采样
+            rand = random.randint(0, len(self.buffer) - batch_size)
+            batch = [self.buffer[i] for i in range(rand, rand + batch_size)]
+            return zip(*batch)
+        else:  # 随机采样
+            batch = random.sample(self.buffer, batch_size)
+            return zip(*batch)
+    ...
+
+    class Policy:
+    def __init__(self, cfg):
+        self.target_update = cfg.target_update
+        self.action_dim = cfg.action_dim  
+        self.device = torch.device(cfg.device) 
+        self.gamma = cfg.gamma  # 奖励的折扣因子
+        # e-greedy策略相关参数
+        self.sample_count = 0  # 用于epsilon的衰减计数
+        self.epsilon_start = cfg.epsilon_start
+        self.epsilon_end =cfg.epsilon_end
+        self.epsilon_decay = cfg.epsilon_decay
+        self.batch_size = cfg.batch_size
+        self.memory = ReplayBuffer(cfg.buffer_size)
+        # 当前网络和目标网络
+        self.policy_net = Model(cfg.state_dim, cfg.action_dim, hidden_dim = cfg.hidden_dim).to(self.device)  # 策略网络
+        self.target_net = Model(cfg.state_dim, cfg.action_dim, hidden_dim = cfg.hidden_dim).to(self.device)  # 目标网络
+
+        # 复制参数到目标网络
+        for target_param, param in zip(self.target_net.parameters(),self.policy_net.parameters()): 
+            target_param.data.copy_(param.data)
+        self.optimizer = optim.Adam(self.policy_net.parameters(), lr=cfg.lr)  # 优化器
+        self.update_cnt = 0  # 用于延迟更新目标网络的计数  
+    ...
+    def update(self):
+        if len(self.memory) < self.batch_size:  # 当经验回放中不满足一个批量时，不更新策略
+            return
+        # 从经验回放中随机采样一个批量的数据
+        states, actions, rewards, next_states, dones = self.memory.sample(
+            self.batch_size)
+        ...
+  ```
 
 ## DQN算法进阶
 - Double DQN：在DQN算法中，我们使用当前网络来选择动作，然后用目标网络计算Q值。而在Double DQN中，我们用当前网络选择动作，但是用目标网络的输出作为下一个状态的价值估计。DQN和Double DQN以及Nature DQN的时间线为：DQN(2013)->Double DQN(2015)->Nature DQN(2015)。
