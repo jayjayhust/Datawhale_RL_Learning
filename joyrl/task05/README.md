@@ -26,8 +26,7 @@
                     action = q_values.max(1)[1].item()  # choose action corresponding to the maximum q value
             else:
                 action = random.randrange(self.action_dim)
-            return action
-        
+            return action      
         @torch.no_grad()  # 不计算梯度，该装饰器效果等同于with torch.no_grad()：
         def predict_action(self, state):
             ''' 预测动作
