@@ -38,7 +38,6 @@
     </code></pre>
 </details>
 
-
 策略梯度的核心思想：一个完整的回合形成了轨迹，τ={s1,a1,r2,s2,a2,...}，其中s是状态，a是动作，r是奖励。策略梯度算法通过最大化期望回报（即轨迹的总和）J(θ)来更新策略参数θ。这个更新参数θ的过程就有点类似back propagation，只不过这里的梯度是相对于策略参数的。
 ![J(θ)](../../images/task05_9-1.png)
 
@@ -78,9 +77,8 @@
                 loss.backward()
             self.optimizer.step()
             self.memory.clear()
-    <pre><code>
+    </code></pre>
 </details>
-
 
 一张图比较直观的展示了策略迭代算法与传统基于价值迭代的方法的区别：一个是单单依靠价值函数（导航计算的结果）来更新策略，一个是同时利用价值函数（导航计算的结果）和策略梯度（人的决策逻辑，比如其中一个简单的逻辑是：根据导航计算的结果，延迟3秒再做动作）来更新策略。
 ![策略迭代vs价值迭代](../../images/task05_9-2.png)
@@ -115,9 +113,8 @@
             logits_p = F.softmax(self.action_layer(x), dim=1)
             value = self.value_layer(x)
             return logits_p, value
-        <pre><code>
+    </code></pre>
 </details>
-
 
 <details>
     <summary> A2C实现策略更新 </summary>
@@ -144,5 +141,5 @@
             logits_p, values = self.model(states)
             advantages = returns - values
             return advantages
-        <pre><code>
+    </code></pre>
 </details>
