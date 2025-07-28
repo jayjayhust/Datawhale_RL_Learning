@@ -35,7 +35,7 @@
             q_values = self.policy_net(state)
             action = q_values.max(1)[1].item()  # choose action corresponding to the maximum q value
             return action
-    <pre><code>
+    </code></pre>
 </details>
 
 
