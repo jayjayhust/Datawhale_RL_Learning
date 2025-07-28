@@ -99,7 +99,7 @@
 - A3C算法(Asynchronous Advantage Actor-Critic)：算法原理上跟A2C算法是一模一样的，只是引入了多进程的概念提高了训练效率。
 - GAE算法(Generalized Advantage Estimation)：A2C算法中优势函数的估计用的是蒙特卡洛方法，而GAE算法则用到了时序差分的方法来近似估计优势函数。
 <details>
-    <summary> 实现Actor和Critic </summary>
+    <summary> 实现Actor和Critic的简单示例代码 </summary>
     <pre><code>
     class ActorCritic(nn.Module):
         def __init__(self, state_dim, action_dim):
@@ -117,7 +117,7 @@
 </details>
 
 <details>
-    <summary> A2C实现策略更新 </summary>
+    <summary> A2C实现策略更新的核心示例代码 </summary>
     <pre><code>
     class Agent:
         def _compute_returns(self, rewards, dones):
