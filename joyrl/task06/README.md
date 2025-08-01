@@ -11,25 +11,27 @@ DDPG算法的核心思想是使用两个神经网络，一个用于策略（Acto
 
 DDPG算法的优势和劣势：
 - 优势：
-  - 适用于连续动作空间，效果好。
+  - 适用于连续动作空间，效果好
+  - 高效的梯度优化
+  - 经验回放和目标网络
 - 劣势：
-  - 训练过程相对复杂，需要同时更新两个网络。
-
-
-
+  - 只适用于连续动作空间
+  - 高度依赖超参数
+  - 高度敏感的初始条件
+  - 容易陷入局部最优
 
 ## TD3(Twin Delayed DDPG)算法
-
+DDPG算法的缺点太多明显，因此后来有人对其进行了改进，这就是我们接下来要介绍的TD3算法，中文全称为双延迟确定性策略梯度算法。相对于DDPG算法，TD3算法的改进主要做了三点重要的改进，一是双Q网络，体现在名字中的Twin，二是延迟更新，体现在名字中的Delayed，三是躁声正则（noise regularisation）。
 
 ## PPO(Proximal Policy Optimization)算法
-PPO是TRPO(Trust Region Policy Optimization)和A2C(Actor-Critic)的结合体，是一种on-policy的算法。
+PPO是TRPO(Trust Region Policy Optimization)和A2C(Actor-Critic)的结合体，是一种on-policy的算法。PPO算法在相关应用中有着非常重要的地位，是一个里程碑式的算法。不同于DDPG算法，PPO算法是一类典型的Actor-Critic算法，既适用于连续动作空间，也适用于离散动作空间。
 
+PPO算法是一种基于策略梯度的强化学习算法，算法的主要思想是通过在策略梯度的优化过程中引入一个重要性权重来限制策略更新的幅度，从而提高算法的稳定性和收敛性。PPO算法的优点在于简单、易于实现、易于调参，应用十分广泛，正可谓 “遇事不决PPO”。
 
 [RSL_RL项目](https://github.com/leggedrobotics/rsl_rl)，一个经典的在GPU上运行的强化学习库，包含PPO算法实现、向量化环境、Actor-Critic网络结构等组件。
 
-
 ## SAC(Soft Actor-Critic)算法
-
+SAC算法是一种基于最大熵强化学习的策略梯度算法，它的目标是最大化策略的熵，从而使得策略更加鲁棒。SAC算法的核心思想是，通过最大化策略的熵，使得策略更加鲁棒，经过超参改良后的SAC算法在稳定性方面是可以与PPO算法华山论剑的。
 
 ## 阅读视觉强化学习/ICLR'25Oral论文
 
